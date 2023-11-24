@@ -22,18 +22,41 @@ console.log(document.title);
 // Integrante 2: ${santiago} ${romero}`
 // );
 
-const dl1 = document.getElementById("list1").children;
-// console.log(dl1[1].innerText);
-console.log(dl1);
+// const dl1 = document.getElementById("list1").children;
+// // console.log(dl1[1].innerText);
+// console.log(dl1);
 
-const dl2 = document.getElementById("list2").children;
-console.log(dl2);
 
-function capture(dl1, dl2) {
-  dl1 = dl1[1].innerText;
-  dl2 = dl2[1].innerText;
+// function capture(dl1, dl2) {
+    //   dl1 = dl1[1].innerText;
+    //   dl2 = dl2[1].innerText;
+    
+    //   return `Integrante 1: ${dl1} \nIntegrante 2: ${dl2}`;
+    // }
+    
+    // console.log(capture(dl1, dl2));
+    
+    const dl= document.getElementsByTagName("dl");
+    function members (list) {
+        let quantity = "";
+        for(let i = 0; i < list.length; i++){ 
+            let element = list[i];
+            function membersName () {  
+                let name = ""
+                for (let x = 0; x < element.childElementCount; x++) {
+                    let person = list[i].children;
+                    if(person[x].tagName === "DD" && x === 1){
+                        name = name.concat(`${person[x].innerHTML}`);
+                    }
+                    if(person[x].tagName === "DD" && person[x].innerHTML !== "" && x !== 1){
+                        name = name.concat(` ${person[x].innerHTML}`);
+                    }
+                }
+                return name
+            }
+            quantity = quantity.concat(`Integrante ${i + 1}: "${membersName()}" \n`);
+        } 
+        return quantity;
+    };
 
-  return `Integrante 1: ${dl1} \nIntegrante 2: ${dl2}`;
-}
-
-console.log(capture(dl1, dl2));
+    console.log(members(dl));
