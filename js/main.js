@@ -22,18 +22,29 @@ console.log(document.title);
 // Integrante 2: ${santiago} ${romero}`
 // );
 
-const dl1 = document.getElementById("list1").children;
+// const dl1 = document.getElementById("list1").children;
 // console.log(dl1[1].innerText);
-console.log(dl1);
+// console.log(dl1);
 
-const dl2 = document.getElementById("list2").children;
-console.log(dl2);
+// const dl2 = document.getElementById("list2").children;
+// console.log(dl2);
 
-function capture(dl1, dl2) {
-  dl1 = dl1[1].innerText;
-  dl2 = dl2[1].innerText;
+// function capture(dl1, dl2) {
+//   dl1 = dl1[1].innerText;
+//   dl2 = dl2[1].innerText;
 
-  return `Integrante 1: ${dl1} \nIntegrante 2: ${dl2}`;
+//   return `Integrante 1: ${dl1} \nIntegrante 2: ${dl2}`;
+// }
+
+// console.log(capture(dl1, dl2));
+
+/* función para crear el nombre completo*/
+function createFullName(htmlCollection) {
+  /* recibe como parametro el listado html q aparece en consola */
 }
 
-console.log(capture(dl1, dl2));
+const listOne = document.getElementById("list1").children;
+/* capturo en una variable el listado 1 de la lista descriptiva con el integrante 1 */
+
+console.log(listOne);
+/* Muest */
