@@ -1,8 +1,9 @@
-:root {
-  --clr-dark: #0f172a;
-  --clr-light: #f1f5f9;
-  --clr-accent: #e11d48;
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+
+* {
+  font-family: "Share Tech", sans-serif;
 }
+
 *,
 *::before,
 *::after {
@@ -10,41 +11,72 @@
 }
 h1 {
   text-align: center;
+  color: rgb(62, 228, 62);
+  font-size: xx-large;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.exe {
+  border: transparent 1px solid;
+  background-color: #00000099;
+  width: 20%;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  transition-duration: 0.3s;
+}
+.exe:hover {
+  background-color: #000000aa;
+}
+
+body {
+  background-image: url("../img/alexander-grey-8lnbXtxFGZw-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .member {
-  width: auto;
+  width: 35%;
   height: auto;
-  background-color: #fb7185;
+  background-color: #00000099;
   padding: 1em;
   font-weight: 700;
   color: var(--clr-light);
   text-align: center;
-  border: 10px solid var(--clr-accent);
+  border: transparent 1px solid;
   border-radius: 10px;
+  transition-duration: 0.3s;
+}
+.member:hover {
+  background-color: #000000aa;
 }
 .container {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: space-evenly;
   gap: 1em;
   align-items: center;
 }
 
-dl {
-  display: flex;
-}
-
 dd {
   padding-right: 8px;
   padding-left: 0;
-  margin: 0 4px 0 4px;
-}
-
-.line {
-  border-right: 1px solid white;
+  margin: 1rem 1rem 2rem 1rem;
+  color: gold;
 }
 
 h2 {
   border-bottom: 1px double wheat;
+  font-size: xx-large;
+  color: rgb(62, 228, 62);
+}
+
+dl {
+  font-size: x-large;
+}
+dt {
+  color: #fff;
 }
