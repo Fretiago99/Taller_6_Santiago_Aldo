@@ -45,7 +45,7 @@ function createFullName(htmlCollection) {
       // }
     }
   }
-  return `"${fullName}"`;
+  return `"${fullName.trimEnd()}"`;
 }
 
 const fullList = document.getElementById("divList").children;
@@ -58,23 +58,38 @@ function showList(list) {
   let text = "";
   /* text va a ser el string total q tiene el nro de integrante y nombre de interante */
   for (let i = 0; i < list.length; i++) {
-    const elementList = list[i];
+    const elementList = list[i].children;
+    /* Este list[i], cuando se tria normalmente h3 un div, otro h3 y otro div, pero en este caso hay div que engloba todo, entonce el for
+    en vez de recorrer el h2 y la description list va a recorrer un div y otro div, entonces hay que ir mas haya de ese div, entonces este list[i]
+    es el div, si hago .children, vamos a tener ya los h2 y los dl, aca se mete a los div secundarios, uno por cada vuelta, entonces hay q meterle
+    otro for en este caso, para que recorra el h2 y el dl   */
     /* logear elementList */
-    console.log(elementList);
-    if (elementList.getElementById === "H2") {
-      /* si es igual a h2 vamos a concatenar */
-      text = text.concat(`${elementList.innerText}: `);
-    }
-    if (elementList.tagName === "DL") {
-      text = text.concat(createFullName(elementList.children) + "\n");
-      /* aca concateno lo q me devuelve el return de la funcion createFullName, yo le paso los children de este DIV */
-      /* le enviamos por parametro el elemento de la lista .children */
+    // console.log(elementList);
+    /* For secundario para acceder a h2 y dl, esto es porque hay una anidacion mas de elementos html los div extra */
+    for (let index = 0; index < elementList.length; index++) {
+      const h2dlElem = elementList[index];
+      /* creamos la nueva variable q va a recorrer ahora si los elementos en las diferentes posiciones con el index */
+
+      if (h2dlElem.tagName === "H2") {
+        /* si es igual a h2 vamos a concatenar */
+        text = text.concat(`${h2dlElem.innerText}: `);
+      }
+      if (h2dlElem.tagName === "DL") {
+        text = text.concat(createFullName(h2dlElem.children) + "\n");
+        /* luego gracias el for secundario ya puedo usar la funcion full name porque ya se lo paso */
+        /* aca concateno lo q me devuelve el return de la funcion createFullName, yo le paso los children de este DIV */
+        /* le enviamos por parametro el elemento de la lista .children */
+      }
     }
   }
   return text;
 }
 /* llamar a la funcion para mostrarla */
-console.log(showList(fullList));
+/* Hay que acceder al childre del children , tenemos una collecion de 2 elementos , 0 con el primer div y 1 con el segundo div*/
+// console.log(fullList);
+// console.log(showList(fullList));
+
+console.log(`-------\n${showList(fullList)}---------`);
 
 /* Ejemplo priemr integrante no tiene segundo nombre, y el segundo integrante no tiene segundo apellido
 entonces vamos a evaluar si viene ese dato, si viene le agregamos el espacio, y si no viene no se lo agregamos, para que quede todo automatizado
