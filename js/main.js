@@ -18,6 +18,9 @@ function createFullName(htmlCollection) {
   /* le asignamos un valor de un string vacio, que va ser mi estado inicial, vamos a ir agregando nombres a este string */
   let fullName = "";
 
+  let counter = 1;
+  let firstName = true;
+
   /* Vamos a hacer un for para pasar por las distintas etiquetas */
   /* HTMLCollection va a ser la lista q aparecen en la consola el arrelgo, se van a separar en distintas variables y las voy a pasar siempre
   por parametro  */
@@ -26,23 +29,23 @@ function createFullName(htmlCollection) {
     se llama htmlCollection q en este caso va a dar 8, sea va a ir de 0 a 7 y cada vuelta vamos a sumarle 1 al index */
     const element = htmlCollection[index];
     /* vamos a acceder al elemento de cada vuelta del htmlCollection */
+    if (element.innerText == "") {
+      counter++;
+    }
+
     if (element.tagName === "DD" && element.innerText) {
-      /* vamos a evaluar el elemento cuando el tagname o etiqueta sea DD */
-      /* si innertext es un espacio vacio osea es falso y si viene falso podemos decirle q solamente concatene cuando innertext tiene algo
-      osea cuandoe es true y viene con nombre */
-      /* solamente va a concatenar cuando sea DD */
-      fullName = fullName.concat(`${element.innerText} `);
-      /* en la primer vuelta se le agrego a fullname el nombre aldo, en la segunda vuelta se le agrego un string vacio por lo tanto
-      no suma nada a la variable, despues se agrego Vera y luego Zúñiga, el string vacio no influye, el strign vacio q se agrega no tiene ingerencia 
-      hace el concat pero no lo agrega*/
-      /* ahora se le da un espacio para que no quede todo el nombre pegado */
-      /* una de las formas de hacer la concatenacion es: */
-      // console.log(element.innerText);
-      // if (element.innerText) {
-      /* hay algo en element.innertext? si hay algo */
-      /* vamos a fullname q ya tiene concatenado el fullname de la linea 34 y le agregamos el espacio*/
-      //   fullName = fullName.concat(" ");
-      // }
+      if (firstName) {
+        /* Si viene el primer nombre */
+        fullName = fullName.concat(`${element.innerText} `);
+        firstName = false;
+      } else {
+        if (counter <= 2) {
+          fullName = fullName.concat(`${element.innerText} `);
+        } else {
+          fullName = fullName.concat(`${element.innerText.toUpperCase()} `);
+        }
+      }
+      counter++;
     }
   }
   return `"${fullName.trimEnd()}"`;
