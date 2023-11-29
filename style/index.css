@@ -14,10 +14,34 @@ h1 {
   color: rgb(62, 228, 62);
   font-size: xx-large;
 }
+a {
+  text-align: center;
+  color: rgb(62, 228, 62);
+  font-size: xx-large;
+  text-decoration: none;
+
+  border: transparent 1px solid;
+  background-color: #00000099;
+  width: auto;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  transition-duration: 0.3s;
+  padding: 1rem;
+}
+
+a:hover {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: whitesmoke;
+  font-size: xx-large;
+}
+
 .title {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.right {
+  margin-left: 10rem;
 }
 .exe {
   border: transparent 1px solid;
@@ -26,6 +50,7 @@ h1 {
   border-radius: 10px;
   margin-bottom: 2rem;
   transition-duration: 0.3s;
+  margin-left: 30%;
 }
 .exe:hover {
   background-color: #000000aa;
@@ -79,4 +104,71 @@ dl {
 }
 dt {
   color: #fff;
+}
+
+/* FORMULARIO */
+
+.container-form {
+  display: flex;
+  justify-content: space-around;
+}
+.card-form {
+  width: 35%;
+  height: auto;
+  background-color: #00000099;
+  padding: 1em;
+  font-weight: 700;
+  color: var(--clr-light);
+  text-align: center;
+  border: transparent 1px solid;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+}
+#img {
+  display: none;
+}
+
+form {
+  margin: 2rem;
+  padding-top: 0.25rem;
+}
+
+input {
+  box-sizing: border-box;
+  border-radius: 1.5rem;
+  border: 1px solid black;
+  display: block;
+  font-family: sans-serif;
+  margin: 1rem 6rem;
+  padding: 0.25rem;
+  width: 15rem;
+  resize: none;
+}
+label {
+  color: whitesmoke;
+  font-size: x-large;
+}
+
+input {
+  height: 1.5rem;
+}
+
+form button {
+  background-color: rgba(0, 255, 0, 1);
+  border: none;
+  border-radius: 1.5rem;
+  color: black;
+  padding: 0.2rem;
+  width: 15rem;
+  font-size: large;
+}
+
+button {
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 1.5rem;
+  color: black;
+  padding: 0.2rem;
+  width: 15rem;
+  font-size: large;
 }
