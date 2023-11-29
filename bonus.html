@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/index.css" />
+  </head>
+  <body>
+    <section class="title">
+      <div class="exe">
+        <h1>Formulario</h1>
+      </div>
+      <div class="right">
+        <a href="./index.html" class="right">Volver</a>
+      </div>
+    </section>
+    <div class="container-form" id="divList">
+      <div class="card-form">
+        <h2>Primer integrante</h2>
+        <form>
+          <label for="">Nombre</label>
+          <input type="text" />
+          <label for="">Segundo nombre</label>
+          <input type="text" />
+          <label for="">Apellido</label>
+          <input type="text" />
+          <label for="">Segundo Apellido</label>
+          <input type="text" />
+          <button type="button">Completar</button>
+        </form>
+        <button id="boton" onclick="mostrar();">
+          Registrar Segundo Integrante
+        </button>
+      </div>
+      <div class="member" id="img">
+        <button id="boton" onclick="ocultar();">Ocultar</button>
+        <h2>Segundo integrante</h2>
+        <form>
+          <label for="">Nombre</label>
+          <input type="text" />
+          <label for="">Segundo nombre</label>
+          <input type="text" />
+          <label for="">Apellido</label>
+          <input type="text" />
+          <label for="">Segundo Apellido</label>
+          <input type="text" />
+          <button type="button">Completar</button>
+        </form>
+      </div>
+    </div>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

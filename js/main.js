@@ -110,3 +110,13 @@ entonces vamos a evaluar si viene ese dato, si viene le agregamos el espacio, y 
 // }
 
 // console.log(integrante());
+
+/* Mostrar Formulario */
+function mostrar() {
+  document.getElementById("img").style.display = "block";
+}
+
+/* Ocultar formulario */
+function ocultar() {
+  document.getElementById("img").style.display = "none";
+}
