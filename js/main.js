@@ -35,28 +35,66 @@ console.log(document.title);
     // }
     
     // console.log(capture(dl1, dl2));
-    
-    const dl= document.getElementsByTagName("dl");
-    function members (list) {
-        let quantity = "";
-        for(let i = 0; i < list.length; i++){ 
-            let element = list[i];
-            function membersName () {  
-                let name = ""
-                for (let x = 0; x < element.childElementCount; x++) {
-                    let person = list[i].children;
-                    if(person[x].tagName === "DD" && x === 1){
-                        name = name.concat(`${person[x].innerHTML}`);
-                    }
-                    if(person[x].tagName === "DD" && person[x].innerHTML !== "" && x !== 1){
-                        name = name.concat(` ${person[x].innerHTML}`);
-                    }
-                }
-                return name
-            }
-            quantity = quantity.concat(`Integrante ${i + 1}: "${membersName()}" \n`);
-        } 
-        return quantity;
-    };
 
-    console.log(members(dl));
+console.log("-----");
+
+const dl= document.getElementsByTagName("dl");
+function members (list) {
+    let quantity = "";
+    for(let i = 0; i < list.length; i++){ 
+        let element = list[i];
+        function membersName () {  
+            let name = ""
+            for (let x = 0; x < element.childElementCount; x++) {
+                let person = list[i].children;
+                if(person[x].tagName === "DD" && x === 1){
+                    name = name.concat(`${person[x].innerHTML}`);
+                }
+                if(person[x].tagName === "DD" && person[x].innerHTML !== "" && x !== 1){
+                    name = name.concat(` ${person[x].innerHTML}`);
+                }
+            }
+            return name
+        }
+        quantity = quantity.concat(`Integrante ${i + 1}: "${membersName()}" \n`);
+    } 
+    return quantity;
+}
+
+console.log(members(dl));
+console.log("-----");
+
+
+console.log("----------------Cuarto Punto----------------");
+console.log(dl[0].getElementsByTagName("dd"));
+function comparacion (data) {
+    let nombre = "";
+
+    for (let i = 0; i < data.length; i++) {
+        const element = data[i].getElementsByTagName("dd");
+        for(let u = 0; u < element.length; u++){
+            let dato = element[u].innerHTML;
+
+            if (u <= 1) {  
+
+                switch (key) {
+                    case value:
+                        
+                        break;
+                
+                    default:
+                        break;
+                }
+                
+            }
+
+            console.log(dato);
+        }
+        
+    }
+}
+
+comparacion(dl);
+
+
+
