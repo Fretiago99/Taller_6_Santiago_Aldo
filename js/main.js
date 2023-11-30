@@ -1,33 +1,11 @@
 function createFullName(htmlCollection) {
   let fullName = "";
 
-  let counter = 1;
-  let firstName = true;
-
   for (let index = 0; index < htmlCollection.length; index++) {
     const element = htmlCollection[index];
 
-    if (element.innerText == "") {
-      counter++;
-    }
-
     if (element.tagName === "DD" && element.innerText) {
-      /* vamos a evaluar el elemento cuando el tagname o etiqueta sea DD */
-      /* si innertext es un espacio vacio osea es falso y si viene falso podemos decirle q solamente concatene cuando innertext tiene algo
-      osea cuandoe es true y viene con nombre */
-      /* solamente va a concatenar cuando sea DD */
       fullName = fullName.concat(`${element.innerText} `);
-      /* en la primer vuelta se le agrego a fullname el nombre aldo, en la segunda vuelta se le agrego un string vacio por lo tanto
-      no suma nada a la variable, despues se agrego Vera y luego Zúñiga, el string vacio no influye, el strign vacio q se agrega no tiene ingerencia 
-      hace el concat pero no lo agrega*/
-      /* ahora se le da un espacio para que no quede todo el nombre pegado */
-      /* una de las formas de hacer la concatenacion es: */
-      // console.log(element.innerText);
-      // if (element.innerText) {
-      /* hay algo en element.innertext? si hay algo */
-      /* vamos a fullname q ya tiene concatenado el fullname de la linea 34 y le agregamos el espacio*/
-      //   fullName = fullName.concat(" ");
-      // }
     }
   }
   return `"${fullName.trimEnd()}"`;
@@ -56,22 +34,137 @@ function showList(list) {
 }
 console.log(`-------\n${showList(fullList)}---------`);
 
-/* Ejemplo priemr integrante no tiene segundo nombre, y el segundo integrante no tiene segundo apellido
-entonces vamos a evaluar si viene ese dato, si viene le agregamos el espacio, y si no viene no se lo agregamos, para que quede todo automatizado
- */
+const dl = document.getElementsByTagName("dl");
 
-/* al final llamamos a la funcion y le mandamos el listado pro parametro osea listOne */
-// console.log(createFullName(listOne));
-/* HtmlCollection toma la lista que le mandemos */
+function nombre(pn, sn, pa, sa) {
+  this.firstNom = pn;
+  this.secondNom = sn;
+  this.firstApe = pa;
+  this.secondApe = sa;
+}
 
-/* OTRA FUNCION  */
-// let integrantes = document.getElementsByTagName("h2");
-// let integranteNum = "";
-// function integrante() {
-//   for (let i = 0; i < integrantes.length; i++) {
-//     integranteNum = integranteNum + integrantes[i].innerText + "\n";
-//   }
-//   return integranteNum;
-// }
+let primName;
+let segunName;
+let primApell;
+let segunApell;
+let members = [];
+let person;
 
-// console.log(integrante());
+for (let i = 0; i < dl.length; i++) {
+  const dlChild = dl[i].children;
+  for (let x = 0; x < dlChild.length; x++) {
+    // const element = dlChild[x];
+    switch (x) {
+      case 1:
+        primName = dlChild[x].innerHTML;
+        break;
+      case 3:
+        segunName = dlChild[x].innerHTML;
+        break;
+      case 5:
+        primApell = dlChild[x].innerHTML;
+        break;
+      case 7:
+        segunApell = dlChild[x].innerHTML;
+        break;
+    }
+  }
+  person = new nombre(primName, segunName, primApell, segunApell);
+  members.push(person);
+}
+function comparar(data) {
+  for (let i = 0; i < data.length - 1; i++) {
+    let color;
+    let clas1;
+    let clas2;
+    if (data[i].firstNom === data[i + 1].firstNom) {
+      color = window.prompt(
+        `El primer nombre ${data[i].firstNom} coincide con el otro primer nombre, Por favor ingresa un color para diferenciarlos`
+      );
+      console.log(`hubo coincidencia en los nombres ${data[i].firstNom}`);
+      clas1 = document.getElementById("1_fristnom");
+      clas2 = document.getElementById("2_fristnom");
+      clas1.style = `color: ${color}`;
+      clas2.style = `color: ${color}`;
+    } else if (data[i].firstNom === data[i + 1].secondNom) {
+      color = window.prompt(
+        `El primer nombre ${data[i].firstNom} coincide con el segundo nombre, Por favor ingresa un color para diferenciarlos`
+      );
+      console.log(`hubo coincidencia en los nombres ${data[i].firstNom}`);
+      clas1 = document.getElementById("1_fristnom");
+      clas2 = document.getElementById("2_secondnom");
+      clas1.style = `color: ${color}`;
+      clas2.style = `color: ${color}`;
+    } else if (data[i].secondNom === data[i + 1].firstNom) {
+      color = window.prompt(
+        `El segundo nombre ${data[i].secondNom} coincide con el primer nombre, Por favor ingresa un color para diferenciarlos`
+      );
+      console.log(`hubo coincidencia en los nombres ${data[i].secondNom}`);
+      clas1 = document.getElementById("1_secondnom");
+      clas2 = document.getElementById("2_fristnom");
+      clas1.style = `color: ${color}`;
+      clas2.style = `color: ${color}`;
+    } else if (data[i].secondNom === data[i + 1].secondNomNom) {
+      color = window.prompt(
+        `El segundo nombre ${data[i].secondNom} coincide con el otro segundo nombre, Por favor ingresa un color para diferenciarlos`
+      );
+      console.log(`hubo coincidencia en los nombres ${data[i].secondNom}`);
+      clas1 = document.getElementById("1_secondnom");
+      clas2 = document.getElementById("2_secondnom");
+      clas1.style = `color: ${color}`;
+      clas2.style = `color: ${color}`;
+    } else {
+      console.log("No hubo coincidencias de nombres");
+      if (
+        confirm(
+          "No hubo coincidencias de nombres, ¿deseas comparar los apellidos?"
+        )
+      ) {
+        if (data[i].firstApe === data[i + 1].firstApe) {
+          color = window.prompt(
+            `El primer apellido ${data[i].firstApe} coincide con el otro primer apellido, Por favor ingresa un color para diferenciarlos`
+          );
+          console.log(`hubo coincidencia en los apellidos ${data[i].firstApe}`);
+          clas1 = document.getElementById("1_fristapell");
+          clas2 = document.getElementById("2_fristapell");
+          clas1.style = `color: ${color}`;
+          clas2.style = `color: ${color}`;
+        } else if (data[i].firstApe === data[i + 1].secondApe) {
+          color = window.prompt(
+            `El primer apellido ${data[i].firstApe} coincide con el segundo apellido, Por favor ingresa un color para diferenciarlos`
+          );
+          console.log(`hubo coincidencia en los apellidos ${data[i].firstApe}`);
+          clas1 = document.getElementById("1_fristapell");
+          clas2 = document.getElementById("2_secondapell");
+          clas1.style = `color: ${color}`;
+          clas2.style = `color: ${color}`;
+        } else if (data[i].secondApe === data[i + 1].firstApe) {
+          color = window.prompt(
+            `El segundo apellido ${data[i].secondApe} coincide con el primer apellido, Por favor ingresa un color para diferenciarlos`
+          );
+          console.log(
+            `hubo coincidencia en los apellidos ${data[i].secondApe}`
+          );
+          clas1 = document.getElementById("1_secondapell");
+          clas2 = document.getElementById("2_firstapell");
+          clas1.style = `color: ${color}`;
+          clas2.style = `color: ${color}`;
+        } else if (data[i].secondApe === data[i + 1].secondApe) {
+          color = window.prompt(
+            `El segundo apellido ${data[i].secondApe} coincide con el otro segundo apellido, Por favor ingresa un color para diferenciarlos`
+          );
+          console.log(
+            `hubo coincidencia en los apellidos ${data[i].secondApe}`
+          );
+          clas1 = document.getElementById("1_secondapell");
+          clas2 = document.getElementById("2_secondapell");
+          clas1.style = `color: ${color}`;
+          clas2.style = `color: ${color}`;
+        } else {
+          console.log("No hubo coincidencias de apellidos");
+        }
+      }
+    }
+  }
+}
+comparar(members);
